@@ -1,0 +1,9 @@
+ru:
+  hello: "Привет, Мир"
+  author: 'Автор'
+  date: 'Дата'
+  question: 'Вопрос'
+  status: "Статус"
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
