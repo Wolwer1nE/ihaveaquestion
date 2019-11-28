@@ -7,3 +7,4 @@ ru:
   time:
     formats:
       default: "%d.%m.%Y %H:%M"
+  authorize: "Войти"

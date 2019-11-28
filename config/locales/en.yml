@@ -35,3 +35,4 @@ en:
   date: 'Date'
   question: 'Question'
   status: "Status"
+  authorize: "Please, login via Github"
