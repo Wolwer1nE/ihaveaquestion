@@ -12,8 +12,9 @@ body {
 
 .container {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
+  width: 80%;
 }
 
 .container div {
@@ -26,6 +27,7 @@ table {
   border-collapse: collapse;
   margin: 1em;
   width: 80%;
+  background-color: white;
 }
 th {
   border-bottom: 1px solid #364043;
@@ -47,4 +49,9 @@ tbody tr {
 }
 tbody tr:hover {
   background: #E2B842;
+}
+.pic {
+  vertical-align: bottom;
+  width: 100%;
+  height: 100%
 }

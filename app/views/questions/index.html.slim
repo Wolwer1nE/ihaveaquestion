@@ -1,12 +1,21 @@
 .container
   table
+    colgroup
+      col span="1" style="width: 10%;"
+      col span="1" style="width: 10%;"
+      col span="1" style="width: 60%;"
+      col span="1" style="width: 10%;"
+      col span="1" style="width: 10%;"
+
     th = t :author
+    th
     th = t :question
     th = t :status
     th = t :date
     - @questions.each do |q|
       tr
         td = q.user.login
+        td = image_tag q.user.avatar_url, class: 'pic' if q.user.avatar_url
         td = link_to q.title, q
         td = fa_icon(q.answered? ? 'comment' : 'comment-slash')
         td = l q.created_at
