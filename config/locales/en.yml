@@ -36,3 +36,9 @@ en:
   question: 'Question'
   status: "Status"
   authorize: "Please, login via Github"
+  new_question: "I have a question!"
+  helpers:
+    submit:
+     question:
+      create: "Answer me"
+  title: "What happened?"

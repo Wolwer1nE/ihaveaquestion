@@ -1,21 +1,28 @@
 class QuestionsController < ApplicationController
   before_action :get_user
 
-
   def index
     @questions = Question.all.order(:created_at)
   end
 
   def show
-
+    @question = Question.find_by_id(params[:id])
   end
 
   def new
-
   end
 
   def create
-    redirect_to :index
+    question_params = params[:question]
+    question = Question.new(title: question_params[:title], body: question_params[:body])
+    question.user = @current_user
+    question.save
+    if question.valid?
+      redirect_to question
+    else
+      flash[:alert] = 'Не удалось создать вопрос.'
+      redirect_to new_question_path
+    end
   end
 
   private

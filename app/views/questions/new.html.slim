@@ -1,0 +1,11 @@
+.block
+  = form_with model: Question.new do |f|
+    = label_tag(t :title)
+    div.field
+      = f.text_field :title, class: "input"
+    br
+    div.fields
+      = f.rich_text_area :body
+    br
+    div.actions
+      = f.submit class: "btn btn-1 btn-1e reversed"

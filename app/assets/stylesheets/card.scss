@@ -91,3 +91,8 @@ body {
           radial-gradient(circle at 100% 0%, rgba(255,255,255,.2) 10%, transparent 20%) center center / 15px 15px,
           linear-gradient(to bottom right, #3C4BBD, #57ADD8);
 }
+.question {
+  display: block;
+  border: #3C4BBD;
+  border-style: dotted;
+}

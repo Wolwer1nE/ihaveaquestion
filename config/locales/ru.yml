@@ -8,3 +8,9 @@ ru:
     formats:
       default: "%d.%m.%Y %H:%M"
   authorize: "Войти"
+  new_question: "У меня вопрос!"
+  helpers:
+    submit:
+      question:
+        create: "Помогите!"
+  title: "А что не получается?"
