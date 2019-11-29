@@ -9,7 +9,7 @@ class AuthController < ApplicationController
     p auth_github_url
     redirect_to "https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_ID']}"+
                               "&scope=read:user&state=#{SecureRandom.hex}"+
-                              "&redirect_uri=http://localhost:3000/auth/github"
+                              "&redirect_uri=#{auth_github_url}"
   end
 
   def github
