@@ -51,3 +51,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim'
 gem 'font-awesome-rails'
 gem 'rest-client'
+gem 'telegram-bot-ruby'
