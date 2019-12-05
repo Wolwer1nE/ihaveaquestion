@@ -7,14 +7,31 @@ class TelegramService
     @token = ENV['TELEGRAM_TOKEN']
   end
 
+  def new_subscribe(id)
+    text = if Subscribtion.find_by_chat_name(id).present?
+             'Already Subscribed'
+           else
+             Subscribtion.create(chat_name: id).valid? ? 'Subscribed!' : 'Can\'t Subscribed!'
+           end
+    @bot.api.send_message(chat_id: message.chat.id, text: text)
+  end
+
+
+  def unsubscribe(id)
+    subscribe = Subscribtion.find_by_chat_name(id)
+    subscribe.destroy if subscribe.present?
+    @bot.api.send_message(chat_id: message.chat.id, text: 'Unsubscribed!')
+  end
+
   def start
     Telegram::Bot::Client.run(@token) do |bot|
+      @bot = bot
       bot.listen do |message|
         case message.text
-        when '/start'
-          bot.api.send_message(chat_id: message.chat.id, text: "Hello, #{message.from.first_name}")
-        when '/stop'
-          bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}")
+        when '/subscribe'
+          new_subscribe(message.chat.id)
+        when '/unsubscribe'
+          unsubscribe(message.chat.id)
         end
       end
     end
@@ -23,7 +40,7 @@ class TelegramService
   end
 
   def send_message(message, chat_id)
-
+    @bot.api.send_message(chat_id: chat_id, text: message)
   end
 
 end

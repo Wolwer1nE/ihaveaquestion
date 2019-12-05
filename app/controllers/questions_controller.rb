@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
     question.user = @current_user
     question.save
     if question.valid?
+      NotifySubscribersJob.perform_later "New question: #{question.title}"
       redirect_to question
     else
       flash[:alert] = 'Не удалось создать вопрос.'
