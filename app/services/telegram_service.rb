@@ -24,19 +24,21 @@ class TelegramService
   end
 
   def start
-    Telegram::Bot::Client.run(@token) do |bot|
-      @bot = bot
-      bot.listen do |message|
-        case message.text
-        when '/subscribe'
-          new_subscribe(message.chat.id)
-        when '/unsubscribe'
-          unsubscribe(message.chat.id)
+    Thread.new do
+      Telegram::Bot::Client.run(@token) do |bot|
+        @bot = bot
+        bot.listen do |message|
+          case message.text
+          when '/subscribe'
+            new_subscribe(message.chat.id)
+          when '/unsubscribe'
+            unsubscribe(message.chat.id)
+          end
         end
       end
+    rescue StandardError => e
+      Rails.logger.info e.message
     end
-  rescue StandardError => e
-    Rails.logger.info e.message
   end
 
   def send_message(message, chat_id)
