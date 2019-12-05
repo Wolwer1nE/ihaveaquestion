@@ -17,3 +17,8 @@ require("channels")
 
 require("trix")
 require("@rails/actiontext")
+
+import 'bootstrap'
+import './stylesheets/application.scss'
+import './sb-admin-2'
+import "@fortawesome/fontawesome-free/js/all";
