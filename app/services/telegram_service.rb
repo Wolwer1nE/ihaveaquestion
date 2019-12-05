@@ -28,11 +28,13 @@ class TelegramService
       Telegram::Bot::Client.run(@token) do |bot|
         @bot = bot
         bot.listen do |message|
-          Rails.logger.info message.chat
+
           case message.text
           when '/subscribe'
+            Rails.logger.info message.chat.id
             new_subscribe(message.chat.id)
           when '/unsubscribe'
+            Rails.logger.info message.chat.id
             unsubscribe(message.chat.id)
           end
         end
