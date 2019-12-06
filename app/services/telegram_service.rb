@@ -45,6 +45,7 @@ class TelegramService
   end
 
   def send_message(message, chat_id)
+    Rails.logger.info "Sending message to #{chat_id}"
     @bot.api.send_message(chat_id: chat_id, text: message)
   end
 
