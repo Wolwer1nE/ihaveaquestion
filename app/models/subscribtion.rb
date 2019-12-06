@@ -1,4 +1,4 @@
-class Subscribtion < ApplicationRecord
+class Subscription < ApplicationRecord
   validates :chat_name, presence: true, uniqueness: true
 
 end

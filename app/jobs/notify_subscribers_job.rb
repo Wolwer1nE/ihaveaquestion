@@ -3,7 +3,7 @@ class NotifySubscribersJob < ApplicationJob
 
   def perform(*args)
     text = args[0]
-    Subscribtion.all do |subscribe|
+    Subscription.all do |subscribe|
       TelegramService.instance.send_message(text, subscribe.chat_name)
     end
   end
