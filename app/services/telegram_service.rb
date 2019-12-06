@@ -13,14 +13,14 @@ class TelegramService
            else
              Subscription.create(chat_name: id).valid? ? 'Subscribed!' : 'Can\'t Subscribed!'
            end
-    @bot.api.send_message(chat_id: message.chat.id, text: text)
+    @bot.api.send_message(chat_id: id, text: text)
   end
 
 
   def unsubscribe(id)
     subscribe = Subscription.find_by_chat_name(id)
     subscribe.destroy if subscribe.present?
-    @bot.api.send_message(chat_id: message.chat.id, text: 'Unsubscribed!')
+    @bot.api.send_message(chat_id: id, text: 'Unsubscribed!')
   end
 
   def start
