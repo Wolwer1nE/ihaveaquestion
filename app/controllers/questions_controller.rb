@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :get_user
 
   def index
-    @questions = Question.all.order(:created_at)
+    @questions = Question.all.order(:created_at).reverse
   end
 
   def show
