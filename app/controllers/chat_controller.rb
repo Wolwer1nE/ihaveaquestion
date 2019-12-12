@@ -9,16 +9,13 @@ class ChatController < BaseAuthController
     message.user = @current_user
     message.save
 
-    return render status: :bad_request unless message.valid?
-
-    respond_to do |format|
-      format.html redirect_to chat_path
-      format.json { render json: {
-          body: message.body,
-          avatar_url: message.user.avatar_url,
-          created_at: message.created_at
-      } }
-    end
+    return render status: :bad_request, json: {} unless message.valid?
+    ActionCable.server.broadcast('chat_channel',
+                                 body: message.body,
+                                 user_id: message.user.id,
+                                 avatar_url: message.user.avatar_url,
+                                 created_at: (l message.created_at))
+    render status: :ok, json: {}
   end
 
 

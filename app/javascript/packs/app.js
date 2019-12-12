@@ -1,10 +1,4 @@
-function appendIncomingMessage(element, message) {
-    element.append("<div class='col-4'></div>")
-
-}
-function appendOutgoingMessage(element, message) {
-    console.log(data);
-}
+import consumer from "../channels/consumer"
 
 function getAuthToken() {
     return $('meta[name=csrf-token]').attr('content');
@@ -13,10 +7,8 @@ function sendMessage(data) {
     $.ajax({
         type: "POST",
         url: "/chat",
-        data:{'body': data['body'], 'authenticity_token': getAuthToken() },
-        dataType: "script",
-        success: function(data) {
-            appendIncomingMessage($(".chat-box"), data)}
+        data:{'body': data.body, 'authenticity_token': getAuthToken() },
+        dataType: "script"
     });
 }
 $(document).ready(function() {
@@ -29,4 +21,6 @@ $(document).ready(function() {
         e.preventDefault(e);
         return false;
     });
+    consumer.subscriptions.create({ channel: "ChatChannel", room: "BaseRoom" })
+
 });
