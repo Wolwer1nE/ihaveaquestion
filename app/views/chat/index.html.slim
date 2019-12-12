@@ -5,7 +5,7 @@
         = render partial: m.direction(@current_user), locals: {message: m}
       .navbar.fixed-bottom.justify-content-center.bg-primary
         .col-lg-8
-          form.bg-light action='/chat' method='post'
+          form.bg-light id='message-form'
             .input-group
               input name="authenticity_token" value= form_authenticity_token type="hidden"
               input.form-control.rounded-0.border-0.py-4.bg-light name="body" aria-describedby="button-addon2" placeholder=("Введите сообщение") type="text" /
