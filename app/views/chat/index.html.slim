@@ -1,0 +1,14 @@
+.row.justify-content-center
+  .col-8.px-0
+    .px-4.py-5.chat-box.bg-white
+      -@messages.each do |m|
+        = render partial: m.direction(@current_user), locals: {message: m}
+      .navbar.fixed-bottom.justify-content-center.bg-primary
+        .col-lg-8
+          form.bg-light action='/chat' method='post'
+            .input-group
+              input name="authenticity_token" value= form_authenticity_token type="hidden"
+              input.form-control.rounded-0.border-0.py-4.bg-light name="body" aria-describedby="button-addon2" placeholder=("Введите сообщение") type="text" /
+              .input-group-append
+                button#button-addon2.btn.btn-link type="submit"
+                  i.fa.fa-paper-plane

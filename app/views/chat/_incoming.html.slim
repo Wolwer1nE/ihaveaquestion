@@ -1,0 +1,6 @@
+.media.w-50.mb-3
+  =image_tag message.user.avatar_url, alt:'avatar', class: 'pic rounded-circle ' if message.user.avatar_url
+  .media-bodyml-3
+    .bg-light.rounded.py-2.px-3.mb-2
+      p.text-small.mb-0.text-muted =message.body
+    p.small.text-muted =l message.created_at

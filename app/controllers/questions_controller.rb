@@ -1,7 +1,6 @@
-class QuestionsController < ApplicationController
-  before_action :get_user
+class QuestionsController <  BaseAuthController
 
-  def index
+def index
     @questions = Question.all.order(:created_at).reverse
   end
 
@@ -26,10 +25,5 @@ class QuestionsController < ApplicationController
     end
   end
 
-  private
 
-  def get_user
-    @current_user = User.find_by_id(session[:user])
-    redirect_to auth_path unless @current_user.present?
-  end
 end

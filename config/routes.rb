@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   get 'auth/github', to: 'auth#github'
 
   get 'home', to: 'home#index'
+
+  get 'chat', to: 'chat#index'
+  post 'chat', to: 'chat#message'
+
 end
