@@ -1,5 +1,4 @@
 class ChatController
-  _layout :chat
   def index
 
   end
