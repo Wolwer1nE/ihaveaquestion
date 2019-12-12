@@ -1,23 +1,21 @@
-=button_to((t :new_question), new_question_path,  method: :get, class:"btn btn-1 btn-1e")
-.container
-  table
-    colgroup
-      col span="1" style="width: 10%;"
-      col span="1" style="width: 10%;"
-      col span="1" style="width: 60%;"
-      col span="1" style="width: 10%;"
-      col span="1" style="width: 10%;"
-
-    th = t :author
-    th
-    th = t :question
-    th = t :status
-    th = t :date
-    - @questions.each do |q|
-      tr
-        td = q.user.login
-        td = image_tag q.user.avatar_url, class: 'pic' if q.user.avatar_url
-        td = link_to q.title, q
-        td = fa_icon(q.answered? ? 'comment' : 'comment-slash')
-        td = l q.created_at
-=button_to((t :new_question), new_question_path,  method: :get, class:"btn btn-1 btn-1e")
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-center
+  a.btn.btn-primary*{href: new_question_path, role: 'button'}
+    =t :new_question
+.row.margin-row
+  -@questions.each do |q|
+    .col-xl-3.col-md-6.mb-4
+      .card.shadow.h-100.py-2 class=(q.answered? ? 'border-left-primary' : 'border-left-danger')
+        .card-body
+          .row.no-gutters.align-items-center
+            .col.mr-2
+              .text-xs.font-weight-bold.text-primary.text-uppercase.mb-1
+                =l q.created_at
+              .text-xs.font-weight-bold.text-warning.text-uppercase.mb-1
+                = q.user.login
+                - if q.answered?
+                  .fa.icon.answered-icon.fa-comment.text-primary
+              .h5.mb-0.font-weight-bold.text-gray-800
+                a.stretched-link*{href: (question_path q)}
+                  =q.title
+            .col-auto
+              =image_tag q.user.avatar_url, class: 'pic' if q.user.avatar_url

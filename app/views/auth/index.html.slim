@@ -1,5 +1,6 @@
-.wrapper
-  .octo-card  id='enter'
+.centered
+    .btn.btn-primary.octo-image.octo-button id='enter' style="width: 100%"
+        =t :authorize
 javascript:
     let element = document.getElementById('enter');
     element.addEventListener('click', function() { window.location ='/auth/new' }, false);
