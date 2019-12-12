@@ -1,19 +1,21 @@
-.white-box
-  h4
-    = @question.title
-  .question
-    == @question.body
-  br
-  -@question.answers.each do |a|
-    .answer
-      = "#{a.user.login} думает так:"
-      ==a.body
-  br
-    =form_for Answer.new do |f|
-      div.fields
-        = f.rich_text_area :body
-      br
-      =hidden_field_tag :question_id, @question.id
-      div.actions
-        = f.submit class: "btn btn-1 btn-1e reversed"
+.row.justify-content-center.margin-row
+  .col-lg-8
+    .lead.text-gray-900
+      = @question.title
+    .text-gray-900
+      == @question.body
+    br
+    -@question.answers.each do |a|
+      .answer
+        = "#{a.user.login} думает так:"
+      .answer-details
+        ==a.body
+    br
+      =form_for Answer.new do |f|
+        div.fields
+          = f.rich_text_area :body
+        br
+        =hidden_field_tag :question_id, @question.id
+        div.actions
+          = f.submit (t :answer), class: "btn btn-primary"
 
