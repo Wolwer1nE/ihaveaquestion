@@ -1,6 +1,7 @@
-.centered
-    .btn.btn-primary.octo-image.octo-button id='enter' style="width: 100%"
-        =t :authorize
+.row.h-100
+  .col-12.align-content-center.align-items-center
+    .btn.btn-primary.octo-image.octo-button.align-self-auto id='enter'
+      =t :authorize
 javascript:
     let element = document.getElementById('enter');
     element.addEventListener('click', function() { window.location ='/auth/new' }, false);
